@@ -1,0 +1,52 @@
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+using namespace std;
+int jump(int a[],int n,int key)
+{
+	int block ,low;
+	low =0;
+	int i;
+	block =sqrt(n);
+while(a[block]<=key && block< n)
+{
+	low =block;
+	block+=sqrt(n);
+	if(block > n-1)
+	{
+		block=n;
+	}
+}
+for(int i =low;i<block ;i++)
+{
+	if(a[i]==key){
+		return 1;
+	}
+}
+return -1;
+}
+int main()
+{
+	int comp;
+	int n;
+	cout<<"enter length of your array = ";
+	cin>>n;
+	int a[n];
+	for(int i =0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	int key ;
+	cout<"enter a number you want to search =";
+   cin>>key;
+   comp=jump(a,n,key);
+   if(comp==1)
+   {
+   	cout<<"present = ";
+   }
+   else
+   {
+   	cout<<"not present = ";
+   }
+   return 0;
+}
